@@ -1,0 +1,150 @@
+.main__chatlist {
+  border-right: 1px solid #ebe7fb;
+  padding: 0 10px 0 0px;
+}
+.chatlist__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+}
+.option {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.option:hover {
+  transform: scale(1.1);
+  text-shadow: 1px 1px 2px grey;
+}
+.option.active {
+  background-color: #e6e5ea;
+  border: 1px solid black;
+}
+
+.search__wrap {
+  background-color: #e6e5ea;
+  border-radius: 5px;
+}
+.search__wrap input {
+  background-color: transparent;
+  border: none;
+  padding: 15px 15px;
+  outline: none;
+  width: 80%;
+  padding-right: 0;
+}
+.search-btn {
+  height: 46px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  width: 20%;
+  cursor: pointer;
+  font-size: 15px;
+}
+.chatlist__items {
+  margin-top: 30px;
+  overflow: auto;
+  max-height: calc(50vh);
+}
+.chatlist__item {
+  display: flex;
+  border-bottom: 1px solid #ebe7fb;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 10px 10px 10px 20px;
+}
+.chatlist__item:first-child {
+  margin-top: 0;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 20px;
+  position: relative;
+}
+.avatar img {
+  max-width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+.chatlist__item .userMeta p {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+}
+.chatlist__item .userMeta span {
+  margin: 0;
+  padding: 0;
+  color: #ceccd3;
+  font-weight: 400;
+  font: size 12px;
+  display: block;
+}
+.chatlist__item:hover,
+.chatlist__item.active {
+  background: #fff;
+  border-radius: 10px;
+}
+.isOnline {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  bottom: 0;
+  right: 0;
+  background-color: #ddd;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.isOnline.active {
+  background-color: tomato;
+}
+.btn {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 230px;
+  height: 47px;
+  line-height: 47px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.12);
+  display: flex;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #4664ff;
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.btn i {
+  flex: 0.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px;
+  border-right: 1px solid #ebe7fb;
+}
+
+.btn span {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
