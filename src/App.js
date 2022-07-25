@@ -1,15 +1,37 @@
 import "./App.css";
-import Nav from "./components/nav/Nav";
-import ChatBody from "./components/chatBody/chatBody";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Application from "./components/aplication/aplication";
+import LoginPage from "./components/loginPage/LoginPage"
+import RegisterPage from "./components/registerPage/RegisterPage";
+import ForgottenPassPage from "./components/forgotPassword/ForgottenPass";
 
+const LOGIN = () => {
+  return (
+    <LoginPage/>
+  )
+};
+
+const REGISTER = () => {
+  return (
+    <RegisterPage/>
+  )
+};
+
+const FORGOTPASS = () => {
+  return (
+    <ForgottenPassPage/>
+  )
+};
+
+const APP = () => {
+  return (
+    <Application/>
+  )
+}
 function App() {
   return (
-    <div className="__main">
-      <Nav />
-      <ChatBody />
-    </div>
+    <LOGIN/>
   );
-}
+};
 
 export default App;

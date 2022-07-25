@@ -4,28 +4,13 @@ import Avatar from "./Avatar";
 export default class ChatListItems extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
-  selectChat(e) {
-    for (
-      let index = 0;
-      index < e.currentTarget.parentNode.children.length;
-      index++
-    ) {
-      e.currentTarget.parentNode.children[index].classList.remove("active");
-    }
-    e.currentTarget.classList.add("active");
-  }
-  stateFunc(state) {
-    if (state) return "online";
-    else return "offline";
   }
 
   render() {
     return (
       <div
         style={{ animationDelay: `0.${this.props.animationDelay}s` }}
-        onClick={this.selectChat}
+        onClick={this.props.onClick}
         className={`chatlist__item ${
           this.props.active ? this.props.active : ""
         } `}
@@ -40,7 +25,7 @@ export default class ChatListItems extends Component {
         <div className="userMeta">
           <p>{this.props.name}</p>
           <span className="activeTime">
-            {this.stateFunc(this.props.active)}
+            {this.props.isOnline ? "online" : "ofline"}
           </span>
         </div>
       </div>

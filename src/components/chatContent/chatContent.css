@@ -1,4 +1,8 @@
 .main__chatcontent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   flex-grow: 1;
   padding: 20px 40px;
   max-width: 63%;
@@ -25,7 +29,7 @@
   color: #000;
 }
 .content__body {
-  max-height: calc(100vh - calc(100vh / 2));
+  max-height: 60vh;
   overflow: auto;
 }
 .chat__item {

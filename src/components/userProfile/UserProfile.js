@@ -5,14 +5,19 @@ export default class UserProfile extends Component {
   toggleInfo = (e) => {
     e.target.parentNode.classList.toggle("open");
   };
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="main__userprofile">
         <div className="profile__card user__profile__image">
           <div className="profile__image">
-            <img src="https://huber.ghostpool.com/wp-content/uploads/avatars/3/596dfc2058143-bpfull.png" />
+            <img src={this.props.currentChat.image} />
           </div>
-          <h4>Fernando Faucho</h4>
+          <h4>{this.props.currentChat.name}</h4>
           <p>CEO and Founder at Highly Inc</p>
         </div>
         <div className="profile__card">

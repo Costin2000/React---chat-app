@@ -3,11 +3,49 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Application from "./components/aplication/aplication";
+import LoginPage from "./components/loginPage/LoginPage"
+import RegisterPage from "./components/registerPage/RegisterPage";
+import ForgottenPassPage from "./components/forgotPassword/ForgottenPass";
+const LOGIN = () => {
+  return (
+    <LoginPage/>
+  )
+};
+
+const REGISTER = () => {
+  return (
+    <RegisterPage/>
+  )
+};
+
+const FORGOTPASS = () => {
+  return (
+    <ForgottenPassPage/>
+  )
+};
+
+const APP = () => {
+  return (
+    <Application/>
+  )
+}
 
 ReactDOM.render(
-  <React.StrictMode>
+
+  /*<React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>,*/
+  <Router>
+    <Routes>
+      <Route path='/' element = {<LOGIN/>}></Route>
+      <Route path='/register' element = {<REGISTER/>} ></Route>
+      <Route path='/login' element = {<LOGIN/>} ></Route>
+      <Route path='/forgotpass' element = {<ForgottenPassPage/>} ></Route>
+      <Route path='/chat' element = {<APP/>}></Route>
+    </Routes>
+  </Router>,
   document.getElementById('root')
 );
 

@@ -6,41 +6,10 @@ import ChatItem from "./ChatItem";
 
 export default class ChatContent extends Component {
   messagesEndRef = createRef(null);
-  chatItms = [
-    {
-      key: 1,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ6tM7Nj72bWjr_8IQ37Apr2lJup_pxX_uZA&usqp=CAU",
-      type: "",
-      msg: "Hey, how are you?",
-    },
-    {
-      key: 2,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-      type: "other",
-      msg: "I am preparing to go out. ",
-    },
-    {
-      key: 3,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-      type: "other",
-      msg: "Would you like to join me?",
-    },
-    {
-      key: 4,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ6tM7Nj72bWjr_8IQ37Apr2lJup_pxX_uZA&usqp=CAU",
-      type: "",
-      msg: "Yeaaahhh, lets gooo!",
-    },
-  ];
 
   constructor(props) {
     super(props);
     this.state = {
-      chat: this.chatItms,
       msg: "",
     };
   }
@@ -53,14 +22,13 @@ export default class ChatContent extends Component {
     window.addEventListener("keydown", (e) => {
       if (e.keyCode === 13) {
         if (this.state.msg !== "") {
-          this.chatItms.push({
+          this.props.newMessage({
             key: 1,
             type: "",
             msg: this.state.msg,
             image:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ6tM7Nj72bWjr_8IQ37Apr2lJup_pxX_uZA&usqp=CAU",
-          });
-          this.setState({ chat: [...this.chatItms] });
+          })
           this.scrollToBottom();
           this.setState({ msg: "" });
         }
@@ -68,6 +36,22 @@ export default class ChatContent extends Component {
     });
     this.scrollToBottom();
   }
+
+  sendMsg() {
+    if (this.state.msg !== "") {
+      this.props.newMessage({
+        key: 1,
+        type: "",
+        msg: this.state.msg,
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ6tM7Nj72bWjr_8IQ37Apr2lJup_pxX_uZA&usqp=CAU",
+      })
+      this.scrollToBottom();
+      this.setState({ msg: "" });
+    }
+    this.scrollToBottom();
+  }
+
   onStateChange = (e) => {
     this.setState({ msg: e.target.value });
   };
@@ -79,10 +63,10 @@ export default class ChatContent extends Component {
           <div className="blocks">
             <div className="current-chatting-user">
               <Avatar
-                isOnline="active"
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU"
+                isOnline={this.props.currentChat.isOnline ? "active":""}
+                image={this.props.currentChat.image}
               />
-              <p>Tim Hover</p>
+              <p>{this.props.currentChat.name}</p>
             </div>
           </div>
 
@@ -96,7 +80,7 @@ export default class ChatContent extends Component {
         </div>
         <div className="content__body">
           <div className="chat__items">
-            {this.state.chat.map((itm, index) => {
+            {this.props.chat.map((itm, index) => {
               return (
                 <ChatItem
                   animationDelay={index + 2}
@@ -121,7 +105,7 @@ export default class ChatContent extends Component {
               onChange={this.onStateChange}
               value={this.state.msg}
             />
-            <button className="btnSendMsg" id="sendMsgBtn">
+            <button className="btnSendMsg" id="sendMsgBtn" onClick={()=> this.sendMsg()}>
               <i className="fa fa-paper-plane"></i>
             </button>
           </div>
